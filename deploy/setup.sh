@@ -5,7 +5,7 @@ set -e
 # TODO: Set to URL of git repo.
 PROJECT_GIT_URL='https://github.com/norczar/profiles-rest-api.git'
 
-PROJECT_BASE_PATH='/usr/local/apps'
+PROJECT_BASE_PATH='/usr/local/apps/'
 
 POSTGRES_NAME=postgres
 POSTGRES_USER=postgres
@@ -22,12 +22,13 @@ mkdir -p $PROJECT_BASE_PATH
 git clone $PROJECT_GIT_URL $PROJECT_BASE_PATH
 
 # Run migrations and collectstatic
-cd $PROJECT_BASE_PATH/profiles-rest-api
+cd $PROJECT_BASE_PATH
+ls
 python manage.py migrate
 python manage.py collectstatic --noinput
 
 # Configure supervisor
-cp $PROJECT_BASE_PATH/profiles-rest-api/deploy/supervisor_profiles_api.conf /etc/supervisor/conf.d/profiles_api.conf
+cp $PROJECT_BASE_PATH/deploy/supervisor_profiles_api.conf /etc/supervisor/conf.d/profiles_api.conf
 supervisorctl reread
 supervisorctl update
 supervisorctl restart profiles_api
