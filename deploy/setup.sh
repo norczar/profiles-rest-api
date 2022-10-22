@@ -5,7 +5,7 @@ set -e
 # TODO: Set to URL of git repo.
 PROJECT_GIT_URL='https://github.com/norczar/profiles-rest-api.git'
 
-PROJECT_BASE_PATH='/usr/local/apps/'
+PROJECT_BASE_PATH='/usr/local/apps'
 
 POSTGRES_NAME=postgres
 POSTGRES_USER=postgres
