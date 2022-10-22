@@ -28,14 +28,14 @@ python manage.py collectstatic --noinput
 
 # Configure supervisor
 cp $PROJECT_BASE_PATH/deploy/supervisor_profiles_api.conf /etc/supervisor/conf.d/profiles_api.conf
-supervisorctl reread
-supervisorctl update
-supervisorctl restart profiles_api
+# supervisorctl reread
+# supervisorctl update
+# supervisorctl restart profiles_api
 
-# Configure nginx
-cp $PROJECT_BASE_PATH/deploy/nginx_profiles_api.conf /etc/nginx/sites-available/profiles_api.conf
-rm /etc/nginx/sites-enabled/default
-ln -s /etc/nginx/sites-available/profiles_api.conf /etc/nginx/sites-enabled/profiles_api.conf
-nginx reload
+# # Configure nginx
+# cp $PROJECT_BASE_PATH/deploy/nginx_profiles_api.conf /etc/nginx/sites-available/profiles_api.conf
+# rm /etc/nginx/sites-enabled/default
+# ln -s /etc/nginx/sites-available/profiles_api.conf /etc/nginx/sites-enabled/profiles_api.conf
+# nginx reload
 
 echo "DONE! :)"
