@@ -8,7 +8,7 @@ WORKDIR /usr/src/app
 COPY requirements.txt ./
 RUN pip install -r requirements.txt
 
-EXPOSE 9000
+
 
 RUN mkdir /docker-entrypoint.d
 COPY docker-entrypoint.sh /
@@ -18,3 +18,8 @@ COPY 30-tune-worker-processes.sh /docker-entrypoint.d
 RUN chmod a+x /docker-entrypoint.sh
 ENTRYPOINT ["/docker-entrypoint.sh"]
 
+EXPOSE 9000
+
+STOPSIGNAL SIGQUIT
+
+CMD ["nginx", "-g", "daemon off;"]

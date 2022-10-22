@@ -33,9 +33,9 @@ python manage.py collectstatic --noinput
 # supervisorctl restart profiles_api
 
 # # Configure nginx
-# cp $PROJECT_BASE_PATH/deploy/nginx_profiles_api.conf /etc/nginx/sites-available/profiles_api.conf
-# rm /etc/nginx/sites-enabled/default
-# ln -s /etc/nginx/sites-available/profiles_api.conf /etc/nginx/sites-enabled/profiles_api.conf
-# nginx reload
+cp $PROJECT_BASE_PATH/deploy/nginx_profiles_api.conf /etc/nginx/sites-available/profiles_api.conf
+rm /etc/nginx/sites-enabled/default
+ln -s /etc/nginx/sites-available/profiles_api.conf /etc/nginx/sites-enabled/profiles_api.conf
 
+uwsgi --http :9000 --wsgi-file /usr/local/apps/composeexample/wsgi.py
 # echo "DONE! :)"
