@@ -1,0 +1,4 @@
+Django
+djangorestframework
+psycopg2-binary
+uwsgi==2.0.18
