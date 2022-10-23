@@ -18,7 +18,7 @@ POSTGRES_PASSWORD=postgres
 # apt-get install -y python3-dev python3-venv python-pip supervisor nginx git locales
 
 # Create project directory
-# mkdir -p $PROJECT_BASE_PATH
+mkdir -p $PROJECT_BASE_PATH
 git clone $PROJECT_GIT_URL $PROJECT_BASE_PATH
 
 # Run migrations and collectstatic
