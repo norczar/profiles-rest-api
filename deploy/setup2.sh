@@ -36,5 +36,6 @@ python3 manage.py collectstatic --noinput
 cp $PROJECT_BASE_PATH/deploy/nginx_profiles_api.conf /etc/nginx/conf.d/default.conf
 
 nginx
+tail -f /var/log/nginx/access.log
 # uwsgi --http :9000 --wsgi-file /usr/local/apps/composeexample/wsgi.py
 # echo "DONE! :)"

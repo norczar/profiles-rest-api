@@ -26,6 +26,7 @@ services:
       context: .
       dockerfile: ./Dockerfile2
     command: ./setup2.sh
+    tty: True
     volumes:
       - .:/usr/src/app
     ports:
