@@ -18,7 +18,7 @@ POSTGRES_PASSWORD=postgres
 # apt-get install -y python3-dev python3-venv python-pip supervisor nginx git locales
 
 # Create project directory
-mkdir -p $PROJECT_BASE_PATH
+# mkdir -p $PROJECT_BASE_PATH
 git clone $PROJECT_GIT_URL $PROJECT_BASE_PATH
 
 # Run migrations and collectstatic
@@ -33,9 +33,9 @@ python manage.py collectstatic --noinput
 # supervisorctl restart profiles_api
 
 # # Configure nginx
-cp $PROJECT_BASE_PATH/deploy/nginx_profiles_api.conf /etc/nginx/sites-available/profiles_api.conf
-rm /etc/nginx/sites-enabled/default
-ln -s /etc/nginx/sites-available/profiles_api.conf /etc/nginx/sites-enabled/profiles_api.conf
+# cp $PROJECT_BASE_PATH/deploy/nginx_profiles_api.conf /etc/nginx/sites-available/profiles_api.conf
+# rm /etc/nginx/sites-enabled/default
+# ln -s /etc/nginx/sites-available/profiles_api.conf /etc/nginx/sites-enabled/profiles_api.conf
 
 uwsgi --http :9000 --wsgi-file /usr/local/apps/composeexample/wsgi.py
 # echo "DONE! :)"

@@ -7,17 +7,28 @@ services:
       - POSTGRES_DB=postgres
       - POSTGRES_USER=postgres
       - POSTGRES_PASSWORD=postgres
-  web:
+  web_backend:
     build: .
     command: ./setup.sh
-    ports:
-      - "9000:9000"
     volumes:
       - .:/usr/src/app
+      - ./static/:/usr/local/apps/composeexample/static
     environment:
       - POSTGRES_NAME=postgres
       - POSTGRES_USER=postgres
       - POSTGRES_PASSWORD=postgres
     depends_on:
       - db
+
+  web_proxy:
+    image: nginx
+    ports:
+      - "80:80"
+    volumes:
+    - ./nginx_profiles_api.conf:/etc/nginx/conf.d/default.conf:ro
+    - ./static:/root
+    depends_on:
+      - db
+      - web_backend
+
 
