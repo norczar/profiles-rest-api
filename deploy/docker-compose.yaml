@@ -12,6 +12,8 @@ services:
       context: .
       dockerfile: ./Dockerfile1
     command: ./setup.sh
+    ports:
+    - "9000:9000"
     volumes:
       - .:/usr/src/app
     environment:
